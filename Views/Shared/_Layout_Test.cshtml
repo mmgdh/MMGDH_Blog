@@ -1,0 +1,131 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>林庆汉的个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Html5TemplatesDreamweaver.com">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> <!-- Remove this Robots Meta Tag, to allow indexing of site -->
+
+    <link href="~/Test/scripts/bootstrap/css/bootstrap.css" rel="stylesheet">
+    @* <link href="~/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="/Test/scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <link href="/Test/scripts/carousel/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Test/scripts/camera/css/camera.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Test/scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/Test/scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/Test/scripts/fontawesome/css/font-awesome.min.css">
+
+    <link href="/Test/styles/custom.css" rel="stylesheet" type="text/css" />
+
+    <script src="/Test/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="/Test/scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Test/scripts/default.js" type="text/javascript"></script>
+
+</head>
+<body id="pageBody">
+
+    <div id="divBoxed" class="container">
+
+       @* <div class="transparent-bg" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: -1;zoom: 1;"></div>*@
+
+        <div class="divPanel notop nobottom">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div id="divLogo" class="pull-left">
+                        <a href="index.html" id="divSiteTitle">林 庆 汉 的 个人博客</a><br />
+                        <a href="index.html" id="divTagLine">Become More Great Than Yesterday</a>
+                    </div>
+
+                    <div id="divMenuRight" class="pull-right">
+                        <div class="navbar">
+                            <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                                NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                            </button>
+                            <div class="nav-collapse collapse">
+                                <ul class="nav nav-pills ddmenu">
+                                    <li class="active"><a href="/Index/Index">Home</a></li>
+                                    <li><a href="javascript:NotComplete()">博文</a></li>
+                                    <li >
+                                        <a href="javascript:NotComplete()" class="dropdown-toggle">影视 </a>@*<b class="caret"></b>*@
+                                        @*<ul class="dropdown-menu">
+                                            <li><a href="/Index/TestDemo">TestDemo</a></li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle">Article &nbsp;&raquo;</a>
+                                                <ul class="dropdown-menu sub-menu">
+                                                    <li><a href="/Article/EditArticle">Edit Article</a></li>
+                                                    <li><a href="#">Dropdown Item</a></li>
+                                                    <li><a href="#">Dropdown Item</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>*@
+                                    </li>
+                                    <li><a href="javascript:NotComplete()">读物</a></li>
+                                    <li>
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle">@User.Identity.Name &nbsp;&raquo;</a>
+                                            <ul class="dropdown-menu sub-menu">
+                                                <li><a href="/Account/outLogin">登出</a></li>
+                                                <li><a href="/BaseInfo/AddBaseInfo">后台维护</a></li>
+                                                <li><a href="/Article/EditArticle">Edit Article</a></li>
+                                                <li><a>管理</a></li>
+                                            </ul>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle">用户管理 &nbsp;&raquo;</a>
+                                            <ul class="dropdown-menu sub-menu">
+                                                <li><a href="javascript:ToRegister()">注册</a></li>
+                                                <li><a href="/Account/Login">登录</a></li>
+                                            </ul>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="contentArea">
+            <div class="row-fluid">
+                <div class="span12" id="divMain">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="divPanel notop page-content">
+
+            </div>
+        </div>
+    </div>
+
+    <br /><br /><br />
+    <script src="/Test/scripts/carousel/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
+    <script type="text/javascript">$('#list_photos').carouFredSel({ responsive: true, width: '100%', scroll: 2, items: { width: 320, visible: { min: 2, max: 6 } } });</script>
+    <script src="/Test/scripts/camera/scripts/camera.min.js" type="text/javascript"></script>
+    <script src="/Test/scripts/easing/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script type="text/javascript">function startCamera() { $('#camera_wrap').camera({ fx: 'scrollLeft', time: 2000, loader: 'none', playPause: false, navigation: true, height: '35%', pagination: true }); } $(function () { startCamera() });</script>
+    <script type="text/javascript">
+        function ToRegister() {
+            alert("暂不开放注册！");
+           // return false;
+        }
+        function NotComplete() {
+            alert("尚未开发完成");
+           // return false;
+        }
+    </script>
+</body>
+</html>

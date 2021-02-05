@@ -1,0 +1,60 @@
+﻿
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Test/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Test/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Test/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Test/css/animate.css" rel="stylesheet">
+    <link href="~/Test/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+    <link rel="shortcut icon" href="/Test/images/ico/favicon.ico">
+    <script src="~/Test/js/jquery.js"></script>
+    <script src="~/Test/js/bootstrap.min.js"></script>
+    <script src="~/Test/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Test/js/main.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><h2>林庆汉的个人博客</h2></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/Index/Index">主页</a></li>
+                    <li><a href="/Article/EditArticle">文章编辑</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="404.html">404</a></li>
+                            <li class="divider"></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header><!--/header-->
+    <section id="recent-works">
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div><!--/.row-->
+        </div>
+    </section><!--/#recent-works-->
+
+    <div>
+        @RenderSection("bottom", required: false)@*required：设置为是否必须*@
+    </div>
+</body>
+</html>

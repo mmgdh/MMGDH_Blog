@@ -1,0 +1,57 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Test/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Test/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Test/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Test/css/animate.css" rel="stylesheet">
+    <link href="~/Test/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+    <link rel="shortcut icon" href="/Test/images/ico/favicon.ico">
+    <script src="~/Test/js/jquery.js"></script>
+    <script src="~/Test/js/bootstrap.min.js"></script>
+    <script src="~/Test/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Test/js/main.js"></script>
+    <link href="/Test/styles/custom.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body id="pageBody">
+    <!--bs中所有的均应该包裹在其中。-->
+    <div class="container">
+        <!-- row是珊栏系统的包裹容器-->
+        <div class="row">
+            <!-- col-md-x 表示此珊栏占据几个格子，offset-x 是偏移x格子-->
+            <div class="col-md-4 col-md-offset-4">
+                <!-- panel分为3个部分，heading,body,footer其中heading部分的颜色来自于panel-default的颜色-->
+                <div class="panel panel-default">
+                    <!-- panel-headeing是有颜色的，此颜色来自于panel-default-->
+                    <div class="panel-heading">登录信息</div>
+                    <div class="panel-body">
+                        <form asp-action="Login" asp-controller="Account" method="post">
+                            <div class="form-group has-feedback">
+                                <input asp-for="UserName" class="form-control" placeholder="用户名" />
+                                <span asp-validation-for="UserName"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input asp-for="PassWord" class="form-control" placeholder="密码" />
+                                <span asp-validation-for="PassWord"></span>
+                            </div>
+                            <div asp-validation-summary="All"></div> 
+                            <!-- button的btn-block 可以占满当前珊栏而不用自适应。-->
+                            <div>
+                                <input type="submit" class="btn btn-success btn-block btn-lg" value="登录" />
+                                <a href="/Index/Index" class="btn btn-success btn-block btn-lg">取消</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

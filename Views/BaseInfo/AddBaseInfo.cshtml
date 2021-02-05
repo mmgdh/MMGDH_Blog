@@ -1,0 +1,132 @@
+﻿@model BaseInfoModel;
+    <script type="text/javascript">
+    function SaveCodeBase() {
+        var formobj = document.getElementById("AddCodeBase");
+        var formData = new FormData(formobj);
+        $.ajax({
+            url: '@Url.Action("AddCodeBase")',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                alert(returndata);
+            },
+            Error: function (returndata) {
+                alert(returndata);
+            }
+        })
+    }
+    function SaveProject() {
+        var formobj = document.getElementById("AddProject");
+        var formData = new FormData(formobj);
+        if (document.getElementById("ProjectName").value == "") {
+            alert("标题不能为空");
+            return false;
+        }
+        if (document.getElementById("Description").value.length < 15) {
+            alert("简介不能小于15个字");
+            return false;
+        }
+        $.ajax({
+            url: '@Url.Action("AddProject")',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                alert(returndata);
+            },
+            Error: function (returndata) {
+                alert(returndata);
+            }
+        })
+    }
+    </script>
+<script>
+    function AddTagIntoContent(content) {
+        
+        var Text = document.getElementById("Tags").value;
+        if (Text.indexOf("[" + content + "]") > -1) {
+            Text = Text.replace("[" + content + "]", "");
+            document.getElementById("Tags").value = Text
+        }
+        else {
+            document.getElementById("Tags").value +="["+ content + "]";
+        }
+
+
+    }
+
+</script>
+<div class="container">
+    <form id="AddCodeBase">
+        <div class="form-group row">
+            <label asp-for="Remark" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input id="Remark" type="text" class="form-control" asp-for="Remark" />
+            </div>
+            <select id="Type" asp-for="Type" asp-items="@Html.GetEnumSelectList(typeof(CodeBaseType))">
+            </select>
+            <input type="button" class="btn btn-primary" onclick="SaveCodeBase()" value="提交">
+        </div>
+    </form>
+    <form id="AddProject">
+        <div class="form-group row-cols-sm-6">
+            <label asp-for="ProjectName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input id="ProjectName" type="text" class="form-control" asp-for="ProjectName" />
+            </div>
+            <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-12">
+                <input id="Description" type="text" class="form-control-plaintext" asp-for="Description" />
+            </div>
+            <label asp-for="Tags" class="col-sm-2 col-form-label"></label>
+            <div>
+                <input id="Tags" type="text" class="form-control-plaintext" asp-for="Tags" readonly />
+            </div>
+            <div>
+                @for (int i = 0; i < Model.DisplayTags.Count; i++)
+                {
+                    var Tag = Model.DisplayTags[i];
+                    if (i != 0 && i % 5 == 0)
+                    {
+                        <br>
+                    }
+                    switch (i % 5)
+                    {
+                        case 0:
+                            <span id="@Tag.id" class="label label-important" onclick="AddTagIntoContent('@Tag.Remark')">@Tag.Remark</span>
+                            break;
+                        case 1:
+                            <span id="@Tag.id" class="label label-primary" onclick="AddTagIntoContent('@Tag.Remark')">@Tag.Remark</span>
+                            break;
+                        case 2:
+                            <span id="@Tag.id" class="label label-success" onclick="AddTagIntoContent('@Tag.Remark')">@Tag.Remark</span>
+                            break;
+                        case 3:
+                            <span id="@Tag.id" class="label label-info" onclick="AddTagIntoContent('@Tag.Remark')">@Tag.Remark</span>
+                            break;
+                        case 4:
+                            <span id="@Tag.id" class="label label-warning" onclick="AddTagIntoContent('@Tag.Remark')">@Tag.Remark</span>
+                            break;
+                        case 5:
+                            <span id="@Tag.id" class="label label-danger" onclick="AddTagIntoContent('@Tag.Remark')">@Tag.Remark</span>
+                            break;
+                    }
+                }
+            </div>
+
+            <div>
+                封面上传：<input type="file" class="form-control-file" name="file" />@*AJAX上传多文件：multiple*@
+            </div>
+
+            <input type="button" class="btn btn-primary" onclick="SaveProject()" value="提交">
+        </div>
+    </form>
+</div>
+

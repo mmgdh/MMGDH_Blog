@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ArticleViewModel>
+
+
+<link rel="stylesheet" href="~/MySyles/IndexStyle.css" />
+<link rel="stylesheet" href="~/MySyles/MyStyle.css" />
+<div class="row-fluid">
+    <div class="span12">
+
+        <div id="headerSeparator"></div>
+
+        @*<div class="camera_full_width">
+            <div id="camera_wrap">
+                <div data-src="/images/1.jpg"><div class="camera_caption fadeFromBottom cap1">Add a slogan or feature here...</div></div>
+                <div data-src="/images/2.png"><div class="camera_caption fadeFromBottom cap2">Add a slogan or feature here...</div></div>
+                <div data-src="/images/1.jpg"></div>
+            </div>
+            <br style="clear:both" /><div style="margin-bottom:40px"></div>
+        </div>*@
+
+        <div id="headerSeparator2"></div>
+
+    </div>
+</div>
+<div class="span8" id="divMain">
+    <div class="inner-1">
+        <ul class="list-blog">
+            @foreach (var article in Model)
+            {
+                @*<li style="border:double">
+                    <h3>@article.Title</h3>
+                    <time datetime="@article.CreateTime.Date.ToShortDateString()" class="date-1"><i class="icon-calendar icon-white"></i> @article.CreateTime.Date.ToShortDateString()</time>
+                    <div class="name-author"><i class="icon-user icon-white"></i> <a href="#">@article.Author</a></div>
+                    <div class="clear"></div>
+                    <img class="img-2" alt="" src="@article.CoverImagePath">
+                    <p>@article.Synopsis</p>
+                    <a href="/Article/ArticleDetail/@article.id" class="btn btn-default">Read More</a>
+                    <hr />
+                </li>*@
+                <li>
+                    <article class="excerpt">
+                        <header>
+                            <a class="label label-important" href="#">技术杂谈<i class="label-arrow"></i></a><h2><a  href="/Article/ArticleDetail/@article.id" title="@article.Title">@article.Title  </a></h2>
+                        </header>
+                        <div class="focus"><a  href="/Article/ArticleDetail/@article.id"><img class="thumb" src="@article.CoverImagePath" alt="@article.Title"></a></div>
+                        <span class="note">
+                            @article.Synopsis
+                        </span>
+                        <p class="auth-span" style="width:inherit">
+                            <span class="muted"><i class="icon-user icon-white"></i> <a href="https://cuiqingcai.com/author/cqcre">@article.Author</a></span>
+                            <span class="muted"><i class="icon-calendar icon-white"></i> @article.CreateTime.Date.ToShortDateString()</span>	
+                        </p>
+                    </article>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
+
+
+<div id="List" style="margin-left:4px" class="mb-3">
+
+</div>
+

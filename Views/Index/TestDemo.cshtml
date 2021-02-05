@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/bootstrap/dist/css/bootstrap.min.css" type="text/css" />6
+    <script type="text/javascript" src="~/EditorMD/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/bootstrap/dist/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="~/bootstrap/dist/css/bootstrap-multiselect.css" type="text/css" />
+    <link rel="stylesheet" href="~/MySyles/IndexStyle.css" type="text/css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>TestDemo</title>
+    <script type="text/javascript">
+        console.log("start");
+        $(document).ready(function () {
+            $('#example-multiple').multiselect();
+            $('#example-radio').multiselect();
+            $('#example-multiple-optgroups').multiselect();
+            $('#example-radio-optgroups').multiselect();
+            /*
+            *分组可选，可折叠，全选时不显示，所有option的数量
+            */
+            $('#example-enableClickableOptGroups').multiselect({
+                enableClickableOptGroups: true,
+                selectAllNumber: false
+            });
+            /*
+            *分组可选，可折叠，可全选，右侧显示下拉选项，
+            *触发选择事件，可搜索，可展示已选择option的数量（numberDisplayed）
+            */
+            $('#example-all').multiselect({
+                enableClickableOptGroups: true,
+                enableCollapsibleOptGroups: true,
+                includeSelectAllOption: true,
+                buttonWidth: '400px',
+                dropRight: true,
+                maxHeight: 200,
+                onChange: function (option, checked) {
+                    alert($(option).val());
+                    /*if(条件) {
+          this.clearSelection();//清除所有选择及显示
+     }*/
+                },
+                nonSelectedText: '请选择',
+                numberDisplayed: 10,
+                enableFiltering: true,
+                allSelectedText: '全部',
+            });
+
+        });
+    </script>
+</head>
+<body style="margin-left:auto">
+    <a href="/Index/Index">主页</a>
+    <a href="/Article/EditArticle">文章</a>
+
+    <article class="excerpt">
+        <header>
+            <a class="label label-important" href="https://cuiqingcai.com/category/technique">技术杂谈<i class="label-arrow"></i></a><h2><a target="_blank" href="https://cuiqingcai.com/9136.html" title="一行代码让网站变成灰色 CSS filter 的用法">一行代码让网站变成灰色 CSS filter 的用法  </a></h2>
+        </header>
+        <div class="focus"><a target="_blank" href="https://cuiqingcai.com/9136.html"><img class="thumb" src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2019/12/harry-cunningham-z3EHcqr8ZkI-unsplash.jpg&amp;h=123&amp;w=200&amp;q=90&amp;zc=1&amp;ct=1" alt="一行代码让网站变成灰色 CSS filter 的用法"></a></div>
+        <span class="note">
+            今天是 2020 年 4 月 4 日，星期六，清明节。
+            想必大家对今年发生的疫情有目共睹，很多英雄为了救助他人在病魔前倒下，更有很多烈士英雄保卫人民的安危遇难，今天全国下降半旗，北京时间 10 点全国默哀三分钟，来致敬英雄们。同时今天一切公共娱乐活动也都会停止，包括直播、综艺、影...
+        </span>
+        <p class="auth-span">
+            <span class="muted"><i class="fa fa-user"></i> <a href="https://cuiqingcai.com/author/cqcre">崔庆才</a></span>
+            <span class="muted"><i class="fa fa-clock-o"></i> 2020-04-09 15:03</span>	<span class="muted"><i class="fa fa-eye"></i> 302浏览</span>	<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="https://cuiqingcai.com/9136.html#respond">0评论</a></span><span class="muted">
+                <a href="javascript:;" data-action="ding" data-id="9136" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+            </span>
+        </p>
+    </article>
+
+</body>
+</html>
